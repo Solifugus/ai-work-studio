@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/sirupsen/logrus"
-	"github.com/yourusername/ai-work-studio/pkg/utils"
+	"github.com/Solifugus/ai-work-studio/pkg/utils"
 )
 
 func TestLoggerCreation(t *testing.T) {

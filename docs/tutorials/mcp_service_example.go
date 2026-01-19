@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yourusername/ai-work-studio/pkg/mcp"
-	"github.com/yourusername/ai-work-studio/pkg/utils"
+	"github.com/Solifugus/ai-work-studio/pkg/mcp"
+	"github.com/Solifugus/ai-work-studio/pkg/utils"
 )
 
 // TextProcessingService demonstrates how to create a custom MCP service.

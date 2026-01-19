@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yourusername/ai-work-studio/pkg/mcp"
+	"github.com/Solifugus/ai-work-studio/pkg/mcp"
 )
 
 // LLMServiceInterface defines the interface needed by the router.

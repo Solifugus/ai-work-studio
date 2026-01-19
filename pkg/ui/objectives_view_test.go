@@ -7,8 +7,8 @@ import (
 
 	"fyne.io/fyne/v2"
 
-	"github.com/yourusername/ai-work-studio/internal/config"
-	"github.com/yourusername/ai-work-studio/pkg/core"
+	"github.com/Solifugus/ai-work-studio/internal/config"
+	"github.com/Solifugus/ai-work-studio/pkg/core"
 )
 
 // setupTestApp creates a test application with temporary storage

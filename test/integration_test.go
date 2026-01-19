@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yourusername/ai-work-studio/pkg/core"
+	"github.com/Solifugus/ai-work-studio/pkg/core"
 )
 
 // TestFullObjectiveExecution tests the complete flow from goal creation to objective completion.

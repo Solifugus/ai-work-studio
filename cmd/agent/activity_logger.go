@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/yourusername/ai-work-studio/pkg/storage"
+	"github.com/Solifugus/ai-work-studio/pkg/storage"
 )
 
 // ActivityLogger provides structured logging for agent activities.

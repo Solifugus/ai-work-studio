@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yourusername/ai-work-studio/pkg/llm"
-	"github.com/yourusername/ai-work-studio/pkg/storage"
+	"github.com/Solifugus/ai-work-studio/pkg/llm"
+	"github.com/Solifugus/ai-work-studio/pkg/storage"
 )
 
 // DecisionUrgency represents how urgent an ethical decision is.

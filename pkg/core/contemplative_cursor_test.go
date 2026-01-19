@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yourusername/ai-work-studio/pkg/storage"
+	"github.com/Solifugus/ai-work-studio/pkg/storage"
 )
 
 // MockLLMReasoner implements LLMReasoner interface for testing.

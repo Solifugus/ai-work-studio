@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/yourusername/ai-work-studio/pkg/storage"
+	"github.com/Solifugus/ai-work-studio/pkg/storage"
 )
 
 // GoalStatus represents the current state of a goal.

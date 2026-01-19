@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yourusername/ai-work-studio/pkg/utils"
+	"github.com/Solifugus/ai-work-studio/pkg/utils"
 )
 
 // TestRetryWithExponentialBackoff tests the retry mechanism with exponential backoff.

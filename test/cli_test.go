@@ -7,11 +7,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yourusername/ai-work-studio/internal/config"
-	"github.com/yourusername/ai-work-studio/pkg/core"
-	"github.com/yourusername/ai-work-studio/pkg/llm"
-	"github.com/yourusername/ai-work-studio/pkg/mcp"
-	"github.com/yourusername/ai-work-studio/pkg/storage"
+	"github.com/Solifugus/ai-work-studio/internal/config"
+	"github.com/Solifugus/ai-work-studio/pkg/core"
+	"github.com/Solifugus/ai-work-studio/pkg/llm"
+	"github.com/Solifugus/ai-work-studio/pkg/mcp"
+	"github.com/Solifugus/ai-work-studio/pkg/storage"
 )
 
 // MockLLMService provides mock LLM functionality for CLI testing.

@@ -52,6 +52,40 @@ The system uses a learning loop where Methods that work are cached and refined; 
 - **Resource usage tracking** with optimization recommendations
 - **Comprehensive logging** and debugging support
 
+## 🔄 System Workflow
+
+Understanding how AI Work Studio organizes work:
+
+### Core Concepts
+1. **Goals** - High-level objectives you want to achieve
+2. **Methods** - Proven approaches for accomplishing goals (learned by the system)
+3. **Objectives** - Specific, actionable tasks within goals
+
+### Workflow Process
+```
+📋 Goal Creation
+    ↓
+⚡ Objective Creation (within goal)
+    ↓
+🧠 Method Learning (automatic, based on success patterns)
+    ↓
+🔄 Continuous Improvement (methods evolve with experience)
+```
+
+### Typical Usage Pattern
+```bash
+# 1. Create a high-level goal
+./ai-studio-cli create-goal "Learn Go Programming" "Master Go for backend development" 8
+
+# 2. Create specific objectives for this goal
+./ai-studio-cli create-objective <goal-id> "Complete Go tutorial" "Work through official Go tutorial"
+
+# 3. System learns and suggests methods automatically as you work
+# 4. Methods improve based on success/failure patterns
+```
+
+**Key Insight:** The system learns effective methods by observing which approaches lead to successful objective completion, building a personalized knowledge base over time.
+
 ## 🚀 Quick Start
 
 ### Installation
@@ -76,26 +110,46 @@ make install
 
 ### First Run
 
-1. **Initialize configuration:**
-   ```bash
-   ./ai-studio-cli config init
-   ```
-
-2. **Set up your API keys:**
+1. **Set up your API keys:**
    ```bash
    export ANTHROPIC_API_KEY="your-key-here"
    export OPENAI_API_KEY="your-key-here"  # optional
    ```
 
-3. **Create your first goal:**
+2. **Create your first goal:**
    ```bash
-   ./ai-studio-cli goal create "Learn to use AI Work Studio effectively"
+   ./ai-studio-cli create-goal "Learn to use AI Work Studio effectively" "Master the core features and workflows" 7
+   ```
+
+3. **Launch interactive CLI mode:**
+   ```bash
+   ./ai-studio-cli
+   # Type 'help' to see all available commands
    ```
 
 4. **Launch the GUI:**
    ```bash
    ./ai-work-studio
    ```
+
+### Interactive Mode
+
+The CLI runs in interactive mode by default, providing a user-friendly command interface:
+
+```bash
+./ai-studio-cli
+🤖 AI Work Studio - Interactive Mode
+Type 'help' for commands, 'exit' to quit
+
+ai-work-studio> help
+# Shows complete command reference with examples
+
+ai-work-studio> status
+# Displays current goals and system status
+
+ai-work-studio> exit
+👋 Goodbye!
+```
 
 ## 🏗️ Build and Development
 
@@ -160,38 +214,69 @@ ai-work-studio/
 ## ⚙️ Configuration
 
 ### Basic Setup
+
+AI Work Studio uses smart defaults and requires minimal configuration to get started:
+
 ```bash
-# Create configuration directory
-mkdir -p ~/.ai-work-studio
-
-# Copy example configuration
-cp config/config.example.toml ~/.ai-work-studio/config.toml
-
-# Edit configuration
-nano ~/.ai-work-studio/config.toml
+# The system automatically creates configuration on first run
+# Default data directory: ~/.ai-work-studio/data
+# Default config file: ~/.ai-work-studio/config.json
 ```
 
-### Key Configuration Options
+### Environment Variables (Recommended)
+
+The easiest way to configure API access:
+
+```bash
+# Required for LLM functionality
+export ANTHROPIC_API_KEY="your-anthropic-key-here"
+
+# Optional for additional LLM providers
+export OPENAI_API_KEY="your-openai-key-here"
+```
+
+### Command Line Configuration
+
+```bash
+# Override data directory
+./ai-studio-cli -data /path/to/custom/data
+
+# Use custom configuration file
+./ai-studio-cli -config /path/to/config.json
+
+# Enable verbose output
+./ai-studio-cli -verbose
+```
+
+### Configuration File (Advanced)
+
+Default configuration with examples:
 
 ```toml
 [storage]
 data_dir = "~/.ai-work-studio/data"
 backup_enabled = true
+backup_retention_days = 30
 
 [api.anthropic]
-api_key = ""  # Or set ANTHROPIC_API_KEY env var
+api_key = ""  # Use ANTHROPIC_API_KEY env var instead
+base_url = "https://api.anthropic.com"
 default_model = "claude-3-sonnet-20241022"
 
 [budget]
 daily_limit = 5.00
 monthly_limit = 150.00
+per_request_limit = 0.50
 tracking_enabled = true
 
 [preferences]
 auto_approve = false
 verbose_output = false
+default_priority = 5
 interactive_mode = true
 ```
+
+**Note:** The system creates configuration automatically with sensible defaults. Manual configuration is only needed for advanced customization.
 
 ## 📊 Performance Characteristics
 
@@ -208,25 +293,39 @@ interactive_mode = true
 ## 🔧 Usage Examples
 
 ### CLI Operations
+
+**Command Line Interface:**
 ```bash
 # Goal management
-./ai-studio-cli goal create "Complete project documentation"
-./ai-studio-cli goal list --status active
-./ai-studio-cli goal show <goal-id>
+./ai-studio-cli create-goal "Complete project documentation" "Write comprehensive docs" 8
+./ai-studio-cli list-goals
+./ai-studio-cli status
 
-# Method operations
-./ai-studio-cli method create --goal-id <goal-id> "Break into smaller tasks"
-./ai-studio-cli method list --successful-only
+# Objective tracking (requires goal ID from list-goals)
+./ai-studio-cli create-objective <goal-id> "Write README.md" "Create comprehensive README documentation"
+./ai-studio-cli list-objectives <goal-id>
 
-# Objective tracking
-./ai-studio-cli objective create --method-id <method-id> "Write README.md"
-./ai-studio-cli objective start <objective-id>
-./ai-studio-cli objective complete <objective-id>
-
-# Configuration
-./ai-studio-cli config set budget.daily_limit 10.00
-./ai-studio-cli config get preferences.verbose_output
+# Configuration (limited keys supported)
+./ai-studio-cli -data /custom/path    # Override data directory
+./ai-studio-cli -verbose              # Enable verbose output
+./ai-studio-cli -config /path/config  # Use custom config file
 ```
+
+**Interactive Mode Commands:**
+```bash
+# Launch interactive mode
+./ai-studio-cli
+
+# Within interactive mode:
+ai-work-studio> help                  # Show all commands
+ai-work-studio> create-goal "Title" "Description" priority
+ai-work-studio> list-goals            # List all goals
+ai-work-studio> status                # Show system status
+ai-work-studio> feedback "message"    # Provide system feedback
+ai-work-studio> exit                  # Quit interactive mode
+```
+
+**Note:** The system follows a workflow where Goals contain Objectives. Methods are automatically managed by the learning system based on successful objective completions.
 
 ### Programmatic Usage
 ```go

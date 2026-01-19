@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yourusername/ai-work-studio/pkg/mcp"
+	"github.com/Solifugus/ai-work-studio/pkg/mcp"
 )
 
 // TestLLMService tests the LLM MCP service implementation.

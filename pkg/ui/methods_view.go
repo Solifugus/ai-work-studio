@@ -11,7 +11,7 @@ import (
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
 
-	"github.com/yourusername/ai-work-studio/pkg/core"
+	"github.com/Solifugus/ai-work-studio/pkg/core"
 )
 
 // MethodsView provides a comprehensive interface for viewing and managing methods

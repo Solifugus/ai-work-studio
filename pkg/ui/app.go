@@ -8,9 +8,9 @@ import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 
-	"github.com/yourusername/ai-work-studio/internal/config"
-	"github.com/yourusername/ai-work-studio/pkg/core"
-	"github.com/yourusername/ai-work-studio/pkg/storage"
+	"github.com/Solifugus/ai-work-studio/internal/config"
+	"github.com/Solifugus/ai-work-studio/pkg/core"
+	"github.com/Solifugus/ai-work-studio/pkg/storage"
 )
 
 // App represents the main AI Work Studio application.

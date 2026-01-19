@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yourusername/ai-work-studio/pkg/mcp"
+	"github.com/Solifugus/ai-work-studio/pkg/mcp"
 )
 
 // MockLLMService provides a mock LLM service for testing.

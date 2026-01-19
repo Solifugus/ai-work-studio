@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/yourusername/ai-work-studio/internal/config"
+	"github.com/Solifugus/ai-work-studio/internal/config"
 )
 
 // TestConfigManager tests the complete configuration management workflow.

@@ -12,7 +12,7 @@ import (
 	"fyne.io/fyne/v2/dialog"
 	"fyne.io/fyne/v2/widget"
 
-	"github.com/yourusername/ai-work-studio/pkg/core"
+	"github.com/Solifugus/ai-work-studio/pkg/core"
 )
 
 // ObjectiveDialogMode represents the mode of the objective dialog.

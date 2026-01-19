@@ -9,8 +9,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yourusername/ai-work-studio/pkg/mcp"
-	"github.com/yourusername/ai-work-studio/pkg/storage"
+	"github.com/Solifugus/ai-work-studio/pkg/mcp"
+	"github.com/Solifugus/ai-work-studio/pkg/storage"
 )
 
 // MethodCache provides efficient caching and retrieval of proven methods.

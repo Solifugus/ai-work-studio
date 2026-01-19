@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yourusername/ai-work-studio/pkg/core"
-	"github.com/yourusername/ai-work-studio/pkg/storage"
+	"github.com/Solifugus/ai-work-studio/pkg/core"
+	"github.com/Solifugus/ai-work-studio/pkg/storage"
 )
 
 // TestUserContextIntegration runs comprehensive integration tests for user context functionality.

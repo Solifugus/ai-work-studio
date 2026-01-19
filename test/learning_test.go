@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/yourusername/ai-work-studio/pkg/core"
+	"github.com/Solifugus/ai-work-studio/pkg/core"
 )
 
 // TestLearningLoopBasicFlow tests the complete learning loop cycle.

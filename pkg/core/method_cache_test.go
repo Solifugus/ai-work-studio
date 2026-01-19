@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yourusername/ai-work-studio/pkg/mcp"
-	"github.com/yourusername/ai-work-studio/pkg/storage"
+	"github.com/Solifugus/ai-work-studio/pkg/mcp"
+	"github.com/Solifugus/ai-work-studio/pkg/storage"
 )
 
 // MockLLMProvider provides predictable embeddings for testing.

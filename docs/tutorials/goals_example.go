@@ -8,9 +8,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/yourusername/ai-work-studio/pkg/core"
-	"github.com/yourusername/ai-work-studio/pkg/storage"
-	"github.com/yourusername/ai-work-studio/pkg/utils"
+	"github.com/Solifugus/ai-work-studio/pkg/core"
+	"github.com/Solifugus/ai-work-studio/pkg/storage"
+	"github.com/Solifugus/ai-work-studio/pkg/utils"
 )
 
 // GoalsExample demonstrates how to create and manage goals using the AI Work Studio API.

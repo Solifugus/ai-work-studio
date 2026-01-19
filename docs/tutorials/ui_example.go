@@ -12,8 +12,8 @@ import (
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 
-	"github.com/yourusername/ai-work-studio/pkg/core"
-	"github.com/yourusername/ai-work-studio/pkg/ui"
+	"github.com/Solifugus/ai-work-studio/pkg/core"
+	"github.com/Solifugus/ai-work-studio/pkg/ui"
 )
 
 // CustomGoalWidget demonstrates how to create custom widgets for AI Work Studio.

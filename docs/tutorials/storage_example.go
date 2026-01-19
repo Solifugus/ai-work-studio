@@ -9,8 +9,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/yourusername/ai-work-studio/pkg/storage"
-	"github.com/yourusername/ai-work-studio/pkg/utils"
+	"github.com/Solifugus/ai-work-studio/pkg/storage"
+	"github.com/Solifugus/ai-work-studio/pkg/utils"
 )
 
 // StorageExample demonstrates the temporal storage system capabilities.

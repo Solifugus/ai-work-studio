@@ -15,7 +15,7 @@ NC='\033[0m' # No Color
 
 # Configuration
 PROJECT_NAME="AI Work Studio"
-REPO_URL="https://github.com/yourusername/ai-work-studio"
+REPO_URL="https://github.com/Solifugus/ai-work-studio"
 DEFAULT_INSTALL_DIR="$HOME/.local/bin"
 DEFAULT_DATA_DIR="$HOME/.config/ai-work-studio"
 DEFAULT_LOG_DIR="$HOME/.local/share/ai-work-studio/logs"
