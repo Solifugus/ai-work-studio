@@ -1,0 +1,98 @@
+# AI Work Studio Agent - User Systemd Service Unit
+# For running as user service instead of system-wide service
+# Simplicity through experience, not complexity through programming
+#
+# Installation:
+#   mkdir -p ~/.config/systemd/user
+#   cp systemd/ai-work-studio-user.service ~/.config/systemd/user/ai-work-studio.service
+#   systemctl --user daemon-reload
+#   systemctl --user enable ai-work-studio
+#   systemctl --user start ai-work-studio
+#
+# Auto-start on login:
+#   sudo loginctl enable-linger $USER
+
+[Unit]
+Description=AI Work Studio Background Agent (User Mode)
+Documentation=https://github.com/yourusername/ai-work-studio/blob/main/docs/installation.md
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+# Service Type
+Type=simple
+Restart=always
+RestartSec=5
+StartLimitInterval=60
+StartLimitBurst=5
+
+# Execution (adjust paths for your installation)
+ExecStart=%h/.local/bin/ai-work-studio-agent --config=%h/.config/ai-work-studio/config.json
+ExecReload=/bin/kill -HUP $MAINPID
+
+# Working Directory
+WorkingDirectory=%h/.local/share/ai-work-studio
+
+# Environment
+Environment=HOME=%h
+Environment=XDG_DATA_HOME=%h/.local/share
+Environment=XDG_CONFIG_HOME=%h/.config
+Environment=XDG_CACHE_HOME=%h/.cache
+
+# Resource limits (adjust as needed)
+MemoryHigh=256M
+MemoryMax=512M
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ai-work-studio-agent
+
+[Install]
+WantedBy=default.target
+
+# Usage Notes:
+#
+# User Service Commands:
+#   systemctl --user status ai-work-studio    # Check status
+#   systemctl --user start ai-work-studio     # Start service
+#   systemctl --user stop ai-work-studio      # Stop service
+#   systemctl --user restart ai-work-studio   # Restart service
+#   systemctl --user reload ai-work-studio    # Reload configuration
+#
+# View Logs:
+#   journalctl --user -u ai-work-studio -f
+#   journalctl --user -u ai-work-studio --since "1 hour ago"
+#
+# Auto-start on login (survives logout):
+#   sudo loginctl enable-linger $USER
+#
+# Directory Structure (typical user installation):
+#   ~/.local/bin/ai-work-studio-agent          # Binary
+#   ~/.config/ai-work-studio/config.json       # Configuration
+#   ~/.local/share/ai-work-studio/             # Data directory
+#   ~/.local/share/ai-work-studio/logs/        # Log files
+#
+# Configuration Template:
+# {
+#   "version": "1.0",
+#   "data_directory": "~/.local/share/ai-work-studio",
+#   "log_directory": "~/.local/share/ai-work-studio/logs",
+#   "log_level": "info",
+#   "storage": {
+#     "type": "file",
+#     "backup_enabled": true,
+#     "backup_interval": "24h"
+#   },
+#   "llm": {
+#     "default_provider": "local",
+#     "budget": {
+#       "daily_limit": 100.0,
+#       "warn_threshold": 80.0
+#     }
+#   },
+#   "agent": {
+#     "auto_start": true,
+#     "check_interval": "5m"
+#   }
+# }

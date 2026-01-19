@@ -1,0 +1,119 @@
+# AI Work Studio Agent - Systemd Service Unit
+# Simplicity through experience, not complexity through programming
+#
+# Installation:
+#   sudo cp systemd/ai-work-studio.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable ai-work-studio
+#   sudo systemctl start ai-work-studio
+#
+# Customization:
+#   Edit User, Group, ExecStart paths as needed for your installation
+#   Update WorkingDirectory and Environment variables as required
+
+[Unit]
+Description=AI Work Studio Background Agent
+Documentation=https://github.com/yourusername/ai-work-studio/blob/main/docs/installation.md
+After=network.target network-online.target
+Wants=network-online.target
+RequiresMountsFor=/home
+
+[Service]
+# Service Type
+Type=simple
+Restart=always
+RestartSec=10
+StartLimitInterval=60
+StartLimitBurst=3
+
+# User and Group (adjust for your installation)
+# Option 1: Run as dedicated user (recommended for production)
+User=ai-work-studio
+Group=ai-work-studio
+
+# Option 2: Run as installing user (uncomment and adjust)
+# User=%i
+# Group=%i
+
+# Option 3: Run as nobody (least privileges, adjust paths accordingly)
+# User=nobody
+# Group=nogroup
+
+# Execution
+ExecStart=/usr/local/bin/ai-work-studio-agent --config=/etc/ai-work-studio/config.json
+ExecReload=/bin/kill -HUP $MAINPID
+
+# Working Directory
+WorkingDirectory=/var/lib/ai-work-studio
+
+# Environment
+Environment=HOME=/var/lib/ai-work-studio
+Environment=XDG_DATA_HOME=/var/lib/ai-work-studio/.local/share
+Environment=XDG_CONFIG_HOME=/var/lib/ai-work-studio/.config
+Environment=XDG_CACHE_HOME=/var/lib/ai-work-studio/.cache
+
+# Security
+# Note: Adjust these settings based on your security requirements
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+
+# Memory and resource limits
+MemoryHigh=512M
+MemoryMax=1G
+CPUQuota=80%
+
+# File system permissions
+ReadWritePaths=/var/lib/ai-work-studio
+ReadWritePaths=/var/log/ai-work-studio
+
+# Capabilities (adjust as needed)
+CapabilityBoundingSet=
+AmbientCapabilities=
+
+# Network (adjust if internet access is not needed)
+# RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+
+# System calls
+SystemCallFilter=@system-service
+SystemCallFilter=~@debug @mount @cpu-emulation @obsolete @privileged @reboot @swap @raw-io
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ai-work-studio-agent
+
+[Install]
+WantedBy=multi-user.target
+
+# Additional Notes:
+#
+# User Setup (for dedicated user option):
+#   sudo useradd --system --shell /bin/false --home-dir /var/lib/ai-work-studio \
+#     --create-home ai-work-studio
+#   sudo mkdir -p /var/lib/ai-work-studio/{data,logs,cache}
+#   sudo mkdir -p /etc/ai-work-studio
+#   sudo chown -R ai-work-studio:ai-work-studio /var/lib/ai-work-studio
+#   sudo chown -R ai-work-studio:ai-work-studio /etc/ai-work-studio
+#
+# Configuration:
+#   Copy your config.json to /etc/ai-work-studio/config.json
+#   Adjust paths in config.json to use /var/lib/ai-work-studio
+#
+# Logs:
+#   View logs with: journalctl -u ai-work-studio -f
+#   Or: journalctl -u ai-work-studio --since "1 hour ago"
+#
+# Monitoring:
+#   Check status: systemctl status ai-work-studio
+#   Start: sudo systemctl start ai-work-studio
+#   Stop: sudo systemctl stop ai-work-studio
+#   Restart: sudo systemctl restart ai-work-studio
+#   Reload config: sudo systemctl reload ai-work-studio

@@ -1,0 +1,156 @@
+# AI Work Studio Configuration File (Example)
+# Copy this file to ~/.config/ai-work-studio/config.toml and customize for your needs.
+#
+# Environment variables can override configuration values:
+#   ANTHROPIC_API_KEY     - Anthropic Claude API key
+#   OPENAI_API_KEY        - OpenAI API key
+#   AI_WORK_STUDIO_DATA_DIR - Data directory path
+#   AI_WORK_STUDIO_DAILY_LIMIT - Daily spending limit (USD)
+#   AI_WORK_STUDIO_MONTHLY_LIMIT - Monthly spending limit (USD)
+#   AI_WORK_STUDIO_PROVIDER - Default LLM provider (anthropic/openai/local)
+#   AI_WORK_STUDIO_VERBOSE - Enable verbose output (true/false)
+#   AI_WORK_STUDIO_USER_ID - User ID for session tracking
+#   AI_WORK_STUDIO_CONFIG - Custom config file path
+
+# Storage Configuration
+[storage]
+# Directory for storing application data (goals, methods, objectives)
+data_dir = "~/.ai-work-studio/data"
+
+# Enable automatic backups of data files
+backup_enabled = true
+
+# Number of days to keep backup files
+backup_retention_days = 30
+
+# API Configuration for LLM Services
+[api]
+# Default provider to use (anthropic, openai, local)
+default_provider = "anthropic"
+
+# Anthropic Claude API settings
+[api.anthropic]
+# API key (prefer setting ANTHROPIC_API_KEY environment variable)
+api_key = ""
+
+# API base URL (change for proxy or custom endpoint)
+base_url = "https://api.anthropic.com"
+
+# Default model to use for Claude requests
+default_model = "claude-3-sonnet-20241022"
+
+# OpenAI API settings
+[api.openai]
+# API key (prefer setting OPENAI_API_KEY environment variable)
+api_key = ""
+
+# API base URL (change for proxy or custom endpoint)
+base_url = "https://api.openai.com/v1"
+
+# Default model to use for OpenAI requests
+default_model = "gpt-4"
+
+# Local model settings (for self-hosted models)
+[api.local]
+# Enable local model support
+enabled = false
+
+# Directory containing local model files
+model_path = "~/.ai-work-studio/models"
+
+# URL for local model server (e.g., llama.cpp server)
+server_url = "http://localhost:8080"
+
+# Budget Limits and Cost Management
+[budget]
+# Maximum daily spending in USD
+daily_limit = 5.00
+
+# Maximum monthly spending in USD
+monthly_limit = 150.00
+
+# Maximum spending per single request in USD
+per_request_limit = 0.50
+
+# Enable usage tracking and cost monitoring
+tracking_enabled = true
+
+# Security and Permission Settings
+[permissions]
+# Directories the agent is allowed to access
+allowed_directories = [
+    "~/",           # User home directory
+    "/tmp"          # Temporary files
+]
+
+# Directories the agent cannot access
+restricted_directories = [
+    "/etc",         # System configuration
+    "/usr",         # System programs
+    "/sys",         # System information
+    "/proc"         # Process information
+]
+
+# Allow agent to make network requests
+allow_network_access = true
+
+# Allow agent to write/modify files
+allow_file_writes = true
+
+# Operations that require explicit user confirmation
+require_confirmation = [
+    "delete",       # File deletion
+    "move",         # File moving
+    "rename"        # File renaming
+]
+
+# User Preferences
+[preferences]
+# Automatically approve low-risk operations
+auto_approve = false
+
+# Enable detailed logging and status information
+verbose_output = false
+
+# Default priority for new goals (1-10, where 10 is highest)
+default_priority = 5
+
+# Enable conversational interaction mode
+interactive_mode = true
+
+# Require confirmation for destructive operations
+confirm_destructive = true
+
+# GUI Window Settings
+[window]
+# Main window width in pixels
+width = 1200
+
+# Main window height in pixels
+height = 800
+
+# Window X position on screen
+x = 100
+
+# Window Y position on screen
+y = 100
+
+# Start with window maximized
+maximized = false
+
+# Default active tab (0=Goals, 1=Methods, 2=Objectives, 3=History, 4=Settings)
+active_tab = 0
+
+# UI theme (light, dark, auto)
+theme = "auto"
+
+# Session State (managed automatically)
+[session]
+# Currently active goal ID (set by application)
+current_goal_id = ""
+
+# Last used data directory
+last_used_data_dir = "~/.ai-work-studio/data"
+
+# User identifier for session tracking
+user_id = "default-user"
