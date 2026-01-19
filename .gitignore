@@ -1,2 +1,35 @@
+# Task management files
 .task-progress.json
 .current-task-context.md
+
+# Build artifacts
+bin/
+ai-work-studio
+ai-work-studio-agent
+ai-studio-cli
+*.test
+agent
+cli
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+logs/
+
+# Configuration files with secrets
+config.local.toml
+.env
+
+# Test data directories
+test-data/
+/tmp/
